@@ -89,6 +89,16 @@ def train_model(model, X_train, y_train, is_train=True):
               epochs=25,
               validation_split=0.2,
               verbose=3)
+    
+    # Log do modelo como artefato do run
+    mlflow.keras.log_model(model, "model")
+
+    # Registro no Model Registry
+    mlflow.register_model(
+        model_uri=f"runs:/{run.info.run_id}/model",
+        name="fetal_health_model"
+    )
+
 
 if __name__ == "__main__":
   X, y = read_data()
