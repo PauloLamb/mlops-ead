@@ -1,5 +1,3 @@
-"""# 1 - Importando os módulos necessários"""
-
 import os
 import random
 import mlflow
